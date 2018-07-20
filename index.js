@@ -10,6 +10,7 @@ const startPositions = [
   [2, 3, 5]
 ]
 
+
 const colors = [
   "red",
   "blue",
@@ -32,13 +33,40 @@ function addEntityToScene(entity) {
 function createSphere() {
   const newSphere = document.createElement('a-sphere')
   const color = sample(colors)
-  const coords = sample(startPositions).join(' ')
+  const coords = sample(startPositions) //DELETE .join
   newSphere.setAttribute("radius", Math.ceil(Math.random() * 3))
   newSphere.setAttribute("color", color)
   newSphere.setAttribute("position", coords)
-  return newSphere
+  console.log(newSphere )
+  console.log("im hereee"+ coords)
+  return [newSphere, coords] //CHANGE THIS
+}
+
+// NEED WRITE THESE TWO FUNCTIONS
+function addBobAnimationToElement(el, coord) {
+  const newAnim = document.createElement('a-animation')
+  newAnim.setAttribute("attribute", "position")
+  newAnim.setAttribute("repeat", "indefinite")
+  newAnim.setAttribute("from", [coord[0], coord[1] - 1, coord[2]].join(" "))
+  newAnim.setAttribute("to", [coord[0], coord[1] + 1, coord[2]].join(" "))
+  newAnim.setAttribute("easing", "ease")
+  newAnim.setAttribute("direction", "alternate")
+  newAnim.setAttribute("dur", "2000")
+  el.appendChild(newAnim)
+  return el
 }
 
 function createSpheres() {
-  // TODO: implement me!
+  x = 4
+  while (x > 0) {
+    //setTimeout(() => {
+      let [el, coords] = createSphere()
+      //el = addBobAnimationToElement(el, coords)
+      addEntityToScene(el)
+    //}, Math.random() * 2500)
+    x--
+  }
 }
+
+createSpheres() //need to call function to make spheres
+

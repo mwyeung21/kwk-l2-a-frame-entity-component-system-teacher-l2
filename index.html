@@ -1,3 +1,4 @@
+
 <html>
   <head>
     <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
@@ -8,13 +9,23 @@
     <a-scene light="defaultLightsEnabled: false">
 
       <!-- light source element -->
-      <!-- <a-entity light="type: ambient"></a-entity> -->
+      <a-entity light="type: ambient"></a-entity>
 
       <!-- our camera aka user perspective element -->
-      <!-- <a-entity camera look-controls wasd-controls position="0 0 15"></a-entity> -->
+      <a-entity camera look-controls wasd-controls position="0 0 15"></a-entity>
 
       <!-- our initial sphere in the center of the scene -->
-      <!-- your sphere here! -->
+      <a-sphere position="0 0 0" radius="2" src = "https://www.jamesfmackenzie.com/img/posts/equirectangular-pano.png">
+        <a-animation
+          attribute="rotation"
+          dur="10000"
+          fill="none"
+          from="0 0 0"
+          to="0 360 0"
+          easing="linear"
+          repeat="indefinite">
+        </a-animation>
+      </a-sphere>
 
     </a-scene>
 
@@ -22,3 +33,4 @@
   </body>
 
 </html>
+
