@@ -51,7 +51,7 @@ function addBobAnimationToElement(el, coord) {
   newAnim.setAttribute("to", [coord[0], coord[1] + 1, coord[2]].join(" "))
   newAnim.setAttribute("easing", "ease")
   newAnim.setAttribute("direction", "alternate")
-  newAnim.setAttribute("dur", "2000")
+  newAnim.setAttribute("dur", "2000") //in miliseconds
   el.appendChild(newAnim)
   return el
 }
